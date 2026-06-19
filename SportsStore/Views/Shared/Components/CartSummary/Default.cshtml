@@ -1,9 +1,9 @@
-@model SportsStore.Models.Cart
+@model Cart
 
-<div class="">
+<div>
     @if (Model?.Lines.Count() > 0)
     {
-        <small class="navbar-text">
+        <small class="navbar-text text-white">
             <b>Your cart:</b>
             @Model?.Lines.Sum(x => x.Quantity) item(s)
             @Model?.ComputeTotalValue().ToString("c")
@@ -12,7 +12,7 @@
 
     <a class="btn btn-sm btn-secondary navbar-btn"
        asp-page="/Cart"
-       asp-route-returnurl="@($"{ViewContext.HttpContext.Request.Path}{ViewContext.HttpContext.Request.QueryString}")">
+       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
         <i class="fa fa-shopping-cart"></i>
     </a>
 </div>
